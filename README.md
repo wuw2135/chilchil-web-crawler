@@ -1,3 +1,3 @@
 # chilchil-web-crawler
-use selenium
+use selenium \n
 only crawl BLCD part rightnow
