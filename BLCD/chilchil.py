@@ -1,9 +1,6 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.options import Options
-from bs4 import BeautifulSoup
-import requests
-from fake_useragent import UserAgent
 import time
 import datetime
 import json
