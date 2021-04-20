@@ -9,7 +9,7 @@ import linecache
 
 options = webdriver.ChromeOptions()
 options.add_argument('user-agent="Mozilla/5.0 (iPod; U; CPU iPhone OS 2_1 like Mac OS X; ja-jp) AppleWebKit/525.18.1 (KHTML, like Gecko) Version/3.1.1 Mobile/5F137 Safari/525.20"')
-driver = webdriver.Chrome(chrome_options=options)
+driver = webdriver.Chrome(chrome_options=options,executable_path="D:/notifiction_bot/SEIYUU/chromedriver")
 
 #ACCOUNT SETTING
 def login():
@@ -198,6 +198,7 @@ def update():
     with open("BLCD_data.json","r",encoding="utf-8") as f:
         data = json.load(f)
 
+            
     for i in range (len(url_list)):
         for j in range (len(data)):
             if url_list[i] in str(data[j]):
@@ -240,7 +241,7 @@ def jsoninput():
     with open("BLCD_data.json","w",encoding="utf-8") as file:
         file.write(json.dumps(detail_list_list,ensure_ascii=False,indent=1))
     
-    with open("url_list","w",encoding="utf-8") as file:
+    with open("url_list.txt","w",encoding="utf-8") as file:
         file.truncate()
 
 def main():
