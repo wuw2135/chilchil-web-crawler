@@ -1,3 +1,3 @@
 # chilchil-web-crawler
 use selenium  
-only crawl BLCD part rightnow
+only crawl BLCD/Seiyuu part rightnow
