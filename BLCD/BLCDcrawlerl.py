@@ -244,6 +244,30 @@ def jsoninput():
     with open("url_list.txt","w",encoding="utf-8") as file:
         file.truncate()
 
+def semeukemark():
+    with open("BLCD_data.json","r",encoding="utf-8") as file:
+        content = json.load(file)
+
+    changed = []
+    with open("BLCD_data.json","w",encoding="utf-8") as file:
+        for j in range (len(content)):
+            string3 = ""
+            string1 = content[j]["seme X uke"]
+            string2 = re.split(' → | X | / ',string1)
+            for i in range(len(string2)):
+                if i == 0 or i == 2 or i ==  4 or i ==  6 or i ==  8 or i ==  10 or i ==  12 or i ==  14 or i ==  16 or i ==  18 or i ==  20 or i ==  22 or i ==  24 or i ==  26:
+                    string2[i] = string2[i] + " → "
+                if i == 1 or i ==  5 or i ==  9 or i ==  13 or i ==  17 or i ==  21 or i ==  25:
+                    string2[i] = "*" + string2[i] + " X "
+                if i == 3 or i ==  7 or i ==  11 or i ==  15 or i ==  19 or i ==  23 or i ==  27:
+                    string2[i] = string2[i] + "*" + " / "
+                
+                string3 = string3 + string2[i]
+            
+            content[j]["seme X uke"] = string3.removesuffix(' / ')
+            changed.append(content[j])
+        file.write(json.dumps(changed,ensure_ascii=False,indent=1))
+
 def main():
     login()
     open("url_list.txt","a",encoding="utf-8")
@@ -252,19 +276,23 @@ def main():
 
     if len(open("BLCD_data.json","r",encoding="utf-8").readlines()) > 0:
         update()
+        semeukemark()
     else:    
         if urlcountdetect() == 0 and datacountdetect() == 0:
             BLCDtitlelinksget()
             datamerge("detail_list.txt")
             jsoninput()
+            semeukemark()
         else:
             if datacountdetect() == 0:
                 datamerge("detail_list.txt")
                 jsoninput()
+                semeukemark()
             else:
                 usedurldelete()
                 datamerge("detail_list.txt")
                 jsoninput()
+                semeukemark()
     
 
     driver.close()
