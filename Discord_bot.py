@@ -35,8 +35,6 @@ async def on_ready():
                 embed.add_field(name=data_update[i]["title"], value=data_update[i]["title_url"], inline=False)
             await channel.send("@everyone",embed=embed)
 
-    channel = bot.get_channel(834135867526086677)
-
     with open("user_record.json","r",encoding="utf-8") as file:
         user_document = json.load(file)
     
