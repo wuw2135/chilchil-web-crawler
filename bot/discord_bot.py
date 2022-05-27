@@ -182,4 +182,4 @@ for filename in os.listdir("./cmds"):
 
 
 if __name__ == "__main__":
-    bot.run("ODE4MTYyODgyMjY0ODI1ODk2.YEUDjw.DB1O4niQtE0YPx3IS4b08xvHNg0")
+    bot.run("")
